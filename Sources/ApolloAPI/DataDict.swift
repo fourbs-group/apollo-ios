@@ -180,7 +180,7 @@ extension RootSelectionSet {
   /// Unsupported usage may result in unintended consequences including crashes.
   @_spi(Unsafe)
   @inlinable public init(_fieldData data: DataDict.FieldValue?) {
-    guard let data, let dataDict = data as? DataDict else {
+    guard let data, let dataDict = data as! AnyHashable as? DataDict else {
       fatalError("\(Self.self) expected DataDict for entity, got \(type(of: data)).")
     }
     self.init(_dataDict: dataDict)
